@@ -49,7 +49,7 @@ class AutoReplacementAgreement:
 
     # 更换协议
     def replacement_agreement(self):
-
+        print('协议更换开始')
         # 根据 targetFile 读取 JSON 文件内容
         with open(self.targetFile, 'r', encoding='utf-8') as file:
             fileContent = json.load(file)
@@ -64,18 +64,15 @@ class AutoReplacementAgreement:
             fileContent["second"]["message"] = second_messageRes
 
             self.fileContent = fileContent
+            print('协议更换完成')
+
             self.generate_json()
             # print(fileContent)
 
 
-    #生成json文件，替换原来的json文件
-    def generate_json(self):
-        with open(self.targetFile, 'w', encoding='utf-8') as file:
-            json.dump(self.fileContent, file, ensure_ascii=False, indent=4)
-
     # 根据文字替换内容
     def replace_text(self, search_string, replacement_string):
-        pass
+        print('文字更换开始')
         with open(self.targetFile, 'r', encoding='utf-8') as file:
             fileContent = json.load(file)
             # 将对象转换为字符串
@@ -85,4 +82,15 @@ class AutoReplacementAgreement:
             # 将字符串转换回JSON格式
             json_obj = json.loads(json_str)
             self.fileContent = json_obj
+            print('文字更换完成')
             self.generate_json()
+
+
+
+    # 生成json文件，替换原来的json文件
+
+    def generate_json(self):
+        print('生成json文件开始')
+        with open(self.targetFile, 'w', encoding='utf-8') as file:
+            json.dump(self.fileContent, file, ensure_ascii=False, indent=4)
+            print('生成json文件完成')
