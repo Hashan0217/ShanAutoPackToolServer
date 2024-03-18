@@ -26,6 +26,18 @@ class autoMatedGitWorkFlow:
             self.commit('Initial commit')
             print('Git 初始化完毕')
 
+
+    # 查看分支是否存在
+    def is_branch_exists(self, branch_name):
+        try:
+            branches = self.repo.branches
+            for branch in branches:
+                if branch.name == branch_name:
+                    return True
+            return False
+        except git.InvalidGitRepositoryError:
+            return "指定的路径不是一个有效的 Git 仓库"
+
     # 添加分支
     def addBranch(self, branchName):
         self.repo.create_head(branchName)

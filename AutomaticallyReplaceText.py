@@ -4,14 +4,14 @@ import re
 
 
 
-class AutoReplacementAgreement:
+class AutomaticallyReplaceText:
     def __init__(self, path, filename,newHelpLink,newPriLink):
         self.path = path
         self.filename = filename
         self.targetFile = None
         self.fileContent = None
-        self.newHelpLink = newHelpLink
-        self.newPriLink = newPriLink
+        self.newHelpLink = newHelpLink | None
+        self.newPriLink = newPriLink | None
 
     def __str__(self):
         self.find_files(self.filename)
@@ -83,7 +83,7 @@ class AutoReplacementAgreement:
             json_obj = json.loads(json_str)
             self.fileContent = json_obj
             print('文字更换完成')
-            self.generate_json()
+            # self.generate_json()
 
 
 
@@ -94,3 +94,7 @@ class AutoReplacementAgreement:
         with open(self.targetFile, 'w', encoding='utf-8') as file:
             json.dump(self.fileContent, file, ensure_ascii=False, indent=4)
             print('生成json文件完成')
+
+
+
+

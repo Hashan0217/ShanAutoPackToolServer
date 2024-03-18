@@ -1,8 +1,9 @@
 import asyncio
 
 from automatedGitWorkFlow import autoMatedGitWorkFlow
-from AutoReplacementAgreement import AutoReplacementAgreement
+from AutomaticallyReplaceText import AutomaticallyReplaceText
 from requestModule import RequestModule
+from autoPackModule import autoPack
 
 # 画一个GUI界面
 
@@ -26,6 +27,7 @@ class runApp:
             "appName": "找车主"
         }
 
+
     async def run(self):
         print('----------START----------')
         # 初始化git
@@ -37,10 +39,15 @@ class runApp:
                 git.gitInit()
                 index += 1
 
-            # 添加分支
-            git.addBranch(platform)
-            # 切换分支
-            git.checkoutBranch(platform)
+            # 查看分支是否存在
+            if git.is_branch_exists(platform):
+                # 切换分支
+                git.checkoutBranch(platform)
+            else:
+                # 添加分支
+                git.addBranch(platform)
+                # 切换分支
+                git.checkoutBranch(platform)
 
             # 请求头配置
             self.headerConfig["brand"] = platform
@@ -57,10 +64,10 @@ class runApp:
             helpLink = agreement["helpUrl"]
             priLink = agreement["priUrl"]
             # 替换协议
-            autoReplacementAgreement = AutoReplacementAgreement(self.filesPath, self.fileName, newHelpLink=helpLink, newPriLink=priLink)
+            AutomaticallyReplaceText = AutomaticallyReplaceText(self.filesPath, self.fileName, newHelpLink=helpLink, newPriLink=priLink)
 
-            autoReplacementAgreement.__str__()
-            autoReplacementAgreement.replacement_agreement()
+            AutomaticallyReplaceText.__str__()
+            AutomaticallyReplaceText.replacement_agreement()
             # 睡眠1秒
             await asyncio.sleep(1)
             # 提交代码
