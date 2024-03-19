@@ -1,0 +1,1 @@
+{"project": "car", "platform": "android", "iscustom": false, "safemode": true, "android": {"packagename": "com.hc.findCar", "androidpacktype": 1, "certalias": "com.hc.findCar", "certfile": "e:/证书文件/找车主/安卓/com.hc.findCar.keystore", "certpassword": "123456", "channels": "xiaomi"}, "isconfusion": false, "splashads": false, "rpads": false, "pushads": false, "exchange": false}

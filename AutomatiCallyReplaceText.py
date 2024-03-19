@@ -10,8 +10,8 @@ class AutomaticallyReplaceText:
         self.filename = filename
         self.targetFile = None
         self.fileContent = None
-        self.newHelpLink = newHelpLink | None
-        self.newPriLink = newPriLink | None
+        self.newHelpLink = newHelpLink
+        self.newPriLink = newPriLink
 
     def __str__(self):
         self.find_files(self.filename)
