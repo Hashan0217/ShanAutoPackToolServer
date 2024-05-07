@@ -29,6 +29,7 @@ class autoPack:
         }
         self.configJosnPath = configJosnPath
         await self.writeJsonFile(self.packConfig)
+        await asyncio.sleep(3)
         return self.packConfig
 
     async def writeJsonFile(self, data):
@@ -89,9 +90,11 @@ class autoPack:
 
 
     #
-    async def run(self, project='tempCarrr', platform='android', iscustom=False, safemode=True, packagename='com.hc.findcar', androidpacktype=1, certalias='com.hc.findcar', certfile='e:/证书文件/找车主/安卓/com.hc.findCar.keystore', certpassword='123456', channels='huawei', isconfusion=False, splashads=False, rpads=False, pushads=False, exchange=False, path=None):
+    async def run(self, project='identification', platform='android', iscustom=False, safemode=True, packagename='com.Illusory.zjz', androidpacktype=1, certalias='com.Illusory.zjz', certfile='E:/证书文件/证件照_com.Illusory.zjz/安卓/com.Illusory.zjz.keystore', certpassword='123456', channels='', isconfusion=False, splashads=False, rpads=False, pushads=False, exchange=False, path=None):
         await self.setPackConfig(project, platform, iscustom, safemode, packagename, androidpacktype, certalias, certfile, certpassword, channels, isconfusion, splashads, rpads, pushads, exchange,configJosnPath=path)
+        await asyncio.sleep(2)
         return await self.cilPack(path)
+
 
 
 
